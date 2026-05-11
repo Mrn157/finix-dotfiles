@@ -1,0 +1,58 @@
+//   _____ _____ _____ _____ _____ _____ _____ _____ _____ 
+//  |   __|  _  |   __|_   _|   __|   __|_   _|     |  |  |
+//  |   __|     |__   | | | |   __|   __| | | |   --|     |
+//  |__|  |__|__|_____| |_| |__|  |_____| |_| |_____|__|__|  OS
+//
+//  Originally by Bina (Get the original here: https://github.com/LierB/fastfetch/blob/master/presets/os.jsonc)
+//  Modified by Mrn1 
+
+
+{
+    "logo": {
+        "source": "nixos_small", // Find logos: fastfetch --list-logos or --print-logos
+        "padding": {
+	        "top": 1
+	},
+    },
+    "display": {
+        "separator": "  "
+    },
+    "modules": [
+	"break",
+	"title",
+        {
+            "type": "os",
+            "key": "",
+            "keyColor": "35",  
+        },
+        {
+            "type": "kernel",
+            "key": "",
+            "keyColor": "35",
+        },
+        {
+            "type": "wm",
+            "format": "",
+            "key": "",
+            "keyColor": "35",
+        },
+        {
+            "type": "packages",
+            "format": "",
+            "key": "",
+            "keyColor": "35",  
+        },
+        {
+            "type": "shell",
+            "format": "",
+            "key": "",
+            "keyColor": "35",
+        },
+        {
+            "type": "memory",
+            "key": "",
+            "keyColor": "35",
+        },
+        "break",
+    ]
+}
