@@ -1,33 +1,76 @@
-# Minimal Finix
-This is my minimal configuration for finix. It installs absolutely nothing but the things needed to work on and expand a finix configuration.
+# Notes: 
+A test of FinixOS and test how much i can make it more daily driveable
 
-I am not promising you a perfect system that will work exactly how you want with services you want. I am promising you a system that boots and is self sufficient enough to get it where you want eventually.
 
-# Notes
+# My current install method (minimal ISO):
 
-Make sure that the NixOS installation boots using UEFI, legacy booting was causing issues with `limine` not being detected. If you have a fix please let me know.
 
-I try not to inject any opinions into this configuration. The only choice I have made is between `mdevd` and `udev`. I chose `mdevd` simply because that is what the other members of the finix community suggested and use.
+Finix can use NixOS minimal ISO.
 
-Because of issues with `mdevd`, drives must be identified by their ID, eg `/dev/sda1`. This causes multidrive systems to be basically unusable. If you want to try this out, just replace `programs.mdevd.enable` with `programs.udev.enable` and add the `udev` module.
+Go root so you don't have to keep using the sudo command
 
-Some users get errors from `efibootmgr` after running `nixos-install`. If the error code is 8, this can be ignored. It's caused by non-existant boot options trying to be added by `efibootmgr`, it fails to add them and returns an error, but existing boot entries are added without issue.
+```bash
+sudo su
+```
 
-# Requirements
+Formatting
+```bash
+cfdisk # Do what you want, resize, create, partitions
+```
+```bash
+lsblk
+```
+```bash
+mkfs.fat -F 32 /dev/<boot-partition>
+```
+```bash
+mkfs.ext4 /dev/<root-partition>
+```
+```bash
+mkswap /dev/<swap-partition>
+```
 
-- Nix Flakes
-- Internet
+Mounting:
+```bash
+mount /dev/<root-partition> /mnt
+```
+```bash
+mkdir -p /mnt/boot
+```
+```bash
+mount /dev/<boot-partition> /mnt/boot
+```
+```bash
+swapon /dev/swap-partition>
+```
+Get neovim
+```bash
+nix-shell -p neovim
+```
+Useful neovim commands
+```bash
+:split | terminal
+:split ./path/to/other.nix
+:bd
+```
+Clone repo to anywhere, i usually put it at `/mnt/etc`
+```bash
+git clone https://github.com/Mrn157/finix-dotfiles.git
+```
+Generate a nix config
+```bash
+sudo nixos-generate-config --root /mnt
+```
+Now here. I use neovim and open two neovims, using `:split`. The generated and this ones hardware-configuration.nix. Make sure to use `/dev/sdX` instead of `/dev/disk/by-uuid`
+```bash
+nvim hardware-configuration.nix
+:split ./generated-hardware-configuration.nix
+```
+I then give my user a password using this method for now (find `password =` )
+```bash
+nvim configuration.nix
+:split | terminal
+mkpasswd -m sha-512 '<desired password>'
+```
 
-# Installing
-
-[Installation Instructions](./docs/INSTALL.md)
-
-# Helpful links
-
-[Finix](https://github.com/finix-community/finix)
-
-[Finix Options Wiki](https://finix-community.github.io/finix/options.html)
-
-[aanderse Config](https://github.com/aanderse/finix-config)
-
-[Finit](https://github.com/finit-project/finit)
+You can now exit the installation ISO and boot
