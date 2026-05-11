@@ -42,7 +42,7 @@
     };
     extraSpecialArgs = { inherit inputs pkgs; };  # <- passing inputs to the attribute set for home-manager
   in {
-    nixosConfigurations.mrn1 = finix.lib.finixSystem {
+    nixosConfigurations.hp = finix.lib.finixSystem {
       inherit (pkgs) lib;
 
       modules = with finix.nixosModules; [
