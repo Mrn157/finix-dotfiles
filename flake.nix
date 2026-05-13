@@ -16,15 +16,15 @@
       # Do not override its nixpkgs input, otherwise there can be mismatch between patches and kernel version
     };
 
+    # Spicetify
+
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hjem = {
-      url = "github:feel-co/hjem";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # Zen Browser
     zen-browser = {
@@ -60,7 +60,10 @@
         bash
         dhcpcd
         iwd
-	      niri
+	niri
+	bluetooth
+	rtkit
+	inputs.spicetify-nix.nixosModules.default
       ];
 
       specialArgs = {

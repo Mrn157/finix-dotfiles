@@ -18,7 +18,7 @@
     };
 
   fileSystems."/boot" =
-    { device = "/dev/dsda1";
+    { device = "/dev/sda1";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };

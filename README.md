@@ -72,5 +72,8 @@ nvim configuration.nix
 :split | terminal
 mkpasswd -m sha-512 '<desired password>'
 ```
+Then
+```bash
+nixos-install --root /mnt --flake .#hp
 
 You can now exit the installation ISO and boot
