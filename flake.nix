@@ -32,6 +32,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+
   };
 
   outputs = inputs@{ self, nixpkgs, finix, home-manager, ... }: 
@@ -63,6 +64,7 @@
 	niri
 	bluetooth
 	rtkit
+	xwayland-satellite
 	inputs.spicetify-nix.nixosModules.default
       ];
 

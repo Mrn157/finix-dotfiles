@@ -32,6 +32,7 @@ in
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+
   finit.runlevel = 3;
 
   finit.services.nix-daemon = {
@@ -230,6 +231,7 @@ in
 
       bluetui
       shadow
+      openssh
       inputs.zen-browser.packages."${system}".default
 
       (pkgs.callPackage ./pkgs/yambar/yambar-pkg.nix {})
