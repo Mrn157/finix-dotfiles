@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    finix.url = "github:finix-community/finix?ref=b7a33ff6b856c85fb13c7e9dc03fd41c824299ba";
+    finix.url = "github:finix-community/finix?ref=main";
     
     # NVChad
     nix4nvchad = {
@@ -65,6 +65,8 @@
 	bluetooth
 	rtkit
 	xwayland-satellite
+	chronyd
+	fwupd
 	inputs.spicetify-nix.nixosModules.default
       ];
 

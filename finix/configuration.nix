@@ -46,10 +46,6 @@ in
       trusted-users = [
         "root"
         "@wheel"
-	"audio"
-	"input"
-	"seat"
-	"pipewire"
       ];
     };
   };
@@ -146,7 +142,12 @@ in
 
     seatd.enable = true;
 
+    # For bluetooth
     bluetooth.enable = true;
+
+    # For time syncing
+    chrony.enable = true;
+
  };
 
  hardware.firmware = with pkgs; [
@@ -184,8 +185,15 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mrn1 = {
     isNormalUser = true;
-    description = "test user";
-    extraGroups = [ "wheel" "video" config.services.seatd.group ];
+    description = "Me";
+    extraGroups = [
+	"wheel"
+	"video"
+	"audio"
+	"input"
+	"seat"
+	"pipewire"
+        config.services.seatd.group ];
     packages = with pkgs; [];
   };
 
