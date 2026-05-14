@@ -259,17 +259,73 @@ in
         enable = true;
 
         files = {
-          # Write a text file in `/home/mrn1/.foo`
-          # with the contents bar
-          ".bash_profile".text = ''
-	  if [[ "$(tty)" == "/dev/tty1" ]] && [[ -z "$DISPLAY" ]]; then
-	    exec niri > /dev/null 2>&1
-	    fi
-	  '';
 
-        # this will write into `/home/alice/.config/test/bar.json`
-        "Pictures/wallpaper.jpg".source = ./modules/wallpaper.jpg;
-        };
+	# Bash Setup
+        ".bash_profile" = {
+	  source = ./modules/terminal/.bash_profile;
+	};
+
+        # Wallpaper Setup
+        "Pictures/wallpaper.jpg" = {
+	  source = ./modules/wallpaper.jpg;
+	};
+
+	# Niri Setup
+	".config/niri/config.kdl" = {
+	  source = ./modules/niri/config.kdl;
+          clobber = true;
+	};
+
+	# Foot Setup
+	".config/foot/foot.ini" = {
+	  source = ./modules/foot/foot.ini;
+          clobber = true;
+	};
+
+	# Hyprland Setup
+	".config/hyprland/hyprland.conf" = {
+	  source = ./modules/hyprland/hyprland.conf;
+          clobber = true;
+	};
+
+	# Rofi Setup
+	".config/rofi/config.rasi" = {
+	  source = ./modules/rofi/rofi/config.rasi;
+          clobber = true;
+	};
+
+	# Dwl Setup
+	".config/dwl/config.def.h" = {
+	  source = ./modules/dwl/config.def.h;
+          clobber = true;
+	};
+
+	# Anyrun Setup
+	".config/anyrun/style.css" = { 
+ 	  source = ./modules/anyrun/style.css;
+          clobber = true;
+	};
+
+	# Yambar Setup
+	".config/yambar" = { 
+	  source = ./modules/yambar;
+          clobber = true;
+	};
+
+	# Waybar Setup
+	".config/waybar" = { 
+	  source = ./modules/waybar;
+          clobber = true;
+	};
+
+	# Fastfetch Setup
+	".config/fastfetch/config.jsonc" = {
+	  source = ./modules/fastfetch/config.jsonc;
+          clobber = true;
+	};
+
+
+	};
       };
     };
   };
