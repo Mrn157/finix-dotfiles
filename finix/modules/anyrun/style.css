@@ -1,0 +1,28 @@
+* {
+  font-size: 10px;
+}
+
+#window,
+#match,
+#entry,
+#plugin,
+
+#match.activatable {
+  border-radius: 8px;
+  margin: 4px 0;
+  padding: 4px;
+  transition: 100ms ease-out;
+}
+
+#match:hover {
+  background: rgba(40, 40, 40, 0.9);
+}
+
+#window {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+

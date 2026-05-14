@@ -1,0 +1,122 @@
+std_overline: &std_overline {overline: { size: 2, color: 7fc8ffff}}
+alt_overline: &alt_overline {overline: { size: 2, color: d6d6d6ff}}
+
+bar:
+  height: 30
+  location: top
+  spacing: 5
+  layer: top
+
+  font: JetBrains Mono Nerd Font:style=ExtraBold:pixelsize=14
+
+  foreground: cba6f7ff
+  background: 11111bff
+
+  border:
+    width: 0
+    color: 99999900
+    margin: 0
+    bottom-margin: 0
+
+  left:
+    - clock:
+        date-format: "%Y-%m-%d"
+        time-format: "%I:%M %p"
+        content:
+          list:
+            spacing: 0
+            items:
+              - string: {text: " 󰥔 ", font: "JetBrains Mono Nerd Font:style=solid:size=14", margin: 3,  on-click: "niri msg action toggle-overview"}
+              - string: {text: "{time}", left-margin: 3, right-margin: 6, on-click: sh -c "pkill yambar; yambar -c ~/.config/yambar/changed-format.yml"} 
+
+    
+  center:
+    - niri-workspaces:
+        content:
+          map:
+            left-margin: 19
+            right-margin: 19
+            # deco: *std_overline
+            on-click: "niri msg action focus-workspace {id}"
+            conditions:
+              focused:
+                - string: {text: "{id}", foreground: cba6f7ff, font: "JetBrains Mono Nerd Font:style=ExtraBold:pixelsize=14"}
+              ~focused:
+                - string: {text: "{id}", foreground : 585b70ff, font: "JetBrains Mono Nerd Font:style=ExtraBold:pixelsize=14"}
+
+  right:
+    - pipewire:
+        anchors:
+          volume_display: &volume_display
+            map:
+              conditions:
+                type == "sink":
+                  list:
+                    spacing: 0
+                    items:
+                      - map:
+                          left-margin: 6
+                          right-margin: 7
+                          # deco: *std_overline
+                          default: 
+                           string: {text: " ", font: "JetBrains Mono Nerd Font:style=ExtraBold:pixelsize=14"}
+                          conditions:
+                            muted: 
+                             string: {text: " ", font: "JetBrains Mono Nerd Font:style=ExtraBold:pixelsize=14", foreground: 808080ff}
+                      - map:
+                          left-margin: 3
+                          right-margin: 6
+                          # deco: *std_overline
+                          conditions:
+                            muted:
+                               string: {text: "{cubic_volume}%", font: "JetBrains Mono Nerd Font:style=ExtraBold:pixelsize=14", foreground: 808080ff}
+                            linear_volume >= 0:
+                               string: {text: "{cubic_volume}%", font: "JetBrains Mono Nerd Font:style=ExtraBold:pixelsize=14"}
+                          on-click:
+                            wheel-up: wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+
+                            wheel-down: wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-
+
+        content:
+          - <<: *volume_display
+    - backlight:
+        name: amdgpu_bl1
+        content:
+          list:
+            spacing: 0
+            items:
+              - ramp:
+                  left-margin: 6
+                  right-margin: 3
+                  font: "JetBrains Mono Nerd Font:pixelsize=14"
+                  # deco: *std_overline
+                  tag: percent
+                  items: 
+                    - string: {text: "󰃞 "}
+                  #  - string: {text: "󰃝 "}
+                  #  - string: {text: "󰃟 "}
+                  #  - string: {text: "󰃠 "}
+              - string: 
+                  left-margin: 3
+                  right-margin: 6
+                  # deco: *std_overline
+                  text: "{percent}%"
+                  on-click:
+                            wheel-up: brightnessctl set 1%+
+                            wheel-down: brightnessctl set 1%-
+    - label:
+        content:
+          string:
+            text: " 󰇙  "
+            on-click:
+              left: "foot tray-tui"
+              right: "niri msg action close-window"
+    - label:
+        content:
+          string:
+            left-margin: 12
+            right-margin: 14
+            deco:
+                 background:
+                   color: 65537bff
+            on-click: sh -c "yad --text=Shutdown? && systemctl poweroff"
+            text: ""

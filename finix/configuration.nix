@@ -21,6 +21,7 @@ let
       pipewire = pipewire';
     }
   );
+
 in
 
 {
@@ -205,7 +206,7 @@ in
       brightnessctl grim slurp rose-pine-cursor wl-clipboard viewnior 
       rose-pine-hyprcursor fzf gcc zsh blueman gdu protonup-ng protontricks
       mission-center xwayland-satellite wev wgcf wireguard-tools unrar cachix
-      nix-init nixd python3 yad eza rofi waydroid-helper
+      nix-init nixd python3 yad eza rofi waydroid-helper steam 
       ninja meson plocate gnumake mpv tmux p7zip neovide steam-run libsm
       rofimoji
       tray-tui
@@ -243,8 +244,35 @@ in
       inputs.zen-browser.packages."${system}".default
 
       (pkgs.callPackage ./pkgs/yambar/yambar-pkg.nix {})
+      
+      # (pkgs.openldap.overrideAttrs (oldAttrs: {
+      # doCheck = !pkgs.stdenv.hostPlatform.isi686;
+      # }))
 
   ];
+
+  # For configuring user config files
+
+  hjem = {
+    users = {
+      mrn1 = {
+        enable = true;
+
+        files = {
+          # Write a text file in `/home/mrn1/.foo`
+          # with the contents bar
+          ".bash_profile".text = ''
+	  if [[ "$(tty)" == "/dev/tty1" ]] && [[ -z "$DISPLAY" ]]; then
+	    exec niri > /dev/null 2>&1
+	    fi
+	  '';
+
+        # this will write into `/home/alice/.config/test/bar.json`
+        "Pictures/wallpaper.jpg".source = ./modules/wallpaper.jpg;
+        };
+      };
+    };
+  };
 
 
 

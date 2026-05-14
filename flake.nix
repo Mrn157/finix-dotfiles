@@ -20,6 +20,12 @@
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
+    # Hjem
+    hjem = {
+      url = "github:r0chd/hjem";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -68,6 +74,7 @@
 	chronyd
 	fwupd
 	inputs.spicetify-nix.nixosModules.default
+	inputs.hjem.finixModules.default
       ];
 
       specialArgs = {
