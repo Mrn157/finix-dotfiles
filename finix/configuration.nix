@@ -202,7 +202,7 @@ in
   # $ nix search wget
   environment.systemPackages = with pkgs; [
       neovim wget foot nemo-with-extensions nwg-look git fastfetch appimage-run unzip cargo pavucontrol btop 
-      udevil ffmpeg_6-full waybar pulsemixer swaybg vulkan-tools kdePackages.kdenlive
+      udisks udiskie ffmpeg_6-full waybar pulsemixer swaybg vulkan-tools kdePackages.kdenlive
       brightnessctl grim slurp rose-pine-cursor wl-clipboard viewnior 
       rose-pine-hyprcursor fzf gcc zsh gdu protonup-ng protontricks
       mission-center xwayland-satellite wev wgcf wireguard-tools unrar cachix
