@@ -241,10 +241,10 @@ in
       bluetui
       shadow
       openssh
+      inputs.helium.packages.${system}.default
       inputs.zen-browser.packages."${system}".default
 
       (pkgs.callPackage ./pkgs/yambar/yambar-pkg.nix {})
-      
       # (pkgs.openldap.overrideAttrs (oldAttrs: {
       # doCheck = !pkgs.stdenv.hostPlatform.isi686;
       # }))
