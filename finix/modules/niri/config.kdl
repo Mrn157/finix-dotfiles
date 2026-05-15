@@ -287,6 +287,7 @@ layout {
 
 // This line starts yambar, a used bar for Wayland compositors.
 
+spawn-sh-at-startup "pipewire & pipewire-pulse & wireplumber"
 spawn-at-startup  "yambar" 
 spawn-sh-at-startup "swaybg -i ~/Pictures/wallpaper.jpg"
 // spawn-sh-at-startup "python3 ~/.config/niri/float.py"
