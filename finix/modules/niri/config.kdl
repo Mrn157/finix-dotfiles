@@ -285,10 +285,14 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
-// This line starts yambar, a used bar for Wayland compositors.
 
+// Kill all services needed for pipewire and then run them all again
 spawn-sh-at-startup "pipewire & pipewire-pulse & wireplumber"
+
+// The bar that I use
 spawn-at-startup  "yambar" 
+
+// My wallpaper
 spawn-sh-at-startup "swaybg -i ~/Pictures/wallpaper.jpg"
 // spawn-sh-at-startup "python3 ~/.config/niri/float.py"
 
