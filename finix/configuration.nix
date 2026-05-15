@@ -32,6 +32,11 @@ in
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  
+  # Make booting silent except for errors
+  boot.kernelParams = [
+    "loglevel=3"
+  ];
 
 
   finit.runlevel = 3;
@@ -39,6 +44,13 @@ in
   finit.services.nix-daemon = {
     environment.CURL_CA_BUNDLE = config.security.pki.caBundle;
   };
+
+  # Audio priority
+  environment.etc."security/limits.conf".text = ''
+    @audio   -   rtprio     95
+    @audio   -   nice       -19
+    @audio   -   memlock    4194304
+  '';
 
   services.nix-daemon = {
     enable = true;
@@ -51,12 +63,12 @@ in
     };
   };
 
-  boot.loader.efi.canTouchEfiVariables = true;
-
   programs = {
     limine = {
       enable = true;
       settings.editor_enabled = true; # Disable on systems that need security
+      settings.timeout = 1;
+      settings.quiet = true;
       force = true;
     };
 
@@ -84,7 +96,18 @@ in
 
       xwayland-satellite.enable = true;
 
+      plymouth = {
+       enable = true;
+      };
+
+      brightnessctl.enable = true;
+
   };
+
+  boot = {
+    loader.efi.canTouchEfiVariables = true;
+  };
+
 
   services = {
       # Audio setup
@@ -203,7 +226,7 @@ in
   environment.systemPackages = with pkgs; [
       neovim wget foot nemo-with-extensions nwg-look git fastfetch appimage-run unzip cargo pavucontrol btop 
       udisks udiskie ffmpeg_6-full waybar pulsemixer swaybg vulkan-tools kdePackages.kdenlive
-      brightnessctl grim slurp rose-pine-cursor wl-clipboard viewnior 
+      grim slurp rose-pine-cursor wl-clipboard viewnior 
       rose-pine-hyprcursor fzf gcc zsh gdu protonup-ng protontricks
       mission-center xwayland-satellite wev wgcf wireguard-tools unrar cachix
       nix-init nixd python3 yad eza rofi waydroid-helper steam 
@@ -241,6 +264,7 @@ in
       bluetui
       shadow
       openssh
+      impala
       inputs.helium.packages.${system}.default
       inputs.zen-browser.packages."${system}".default
 

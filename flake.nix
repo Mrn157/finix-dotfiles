@@ -73,6 +73,7 @@
 	xwayland-satellite
 	chronyd
 	fwupd
+	brightnessctl
 	inputs.spicetify-nix.nixosModules.default
 	inputs.hjem.finixModules.default
       ];
