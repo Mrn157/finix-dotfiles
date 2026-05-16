@@ -77,6 +77,10 @@ in
     @audio   -   memlock    4194304
   '';
 
+  # Zsh boot error fix
+  environment.etc."set-environment".text = ''
+  '';
+
   services.nix-daemon = {
     enable = true;
     settings = {
@@ -320,7 +324,12 @@ in
 	 programs.zsh = {
 		enable = true;
 		initConfig = ''
-     # Load plugins installed via nixpkgs
+
+      HISTFILE=~/.zsh_history
+      HISTSIZE=10000
+      SAVEHIST=50000
+
+      # Load plugins installed via nixpkgs
       source ${pkgs.zsh-fast-syntax-highlighting}/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
       
       source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
