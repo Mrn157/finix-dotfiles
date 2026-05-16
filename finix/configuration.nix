@@ -38,12 +38,37 @@ in
     "loglevel=3"
   ];
 
+  # Fixes the blink after boot (which messes up niri and just makes a blank screen if run before the blink)
+  boot.kernelModules = [ "amdgpu" ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
+
+
 
   finit.runlevel = 3;
 
   finit.services.nix-daemon = {
     environment.CURL_CA_BUNDLE = config.security.pki.caBundle;
   };
+
+  providers.privileges.rules = lib.optionals config.services.mdevd.enable [
+    {
+      command = "/run/current-system/sw/bin/poweroff";
+      groups = [ config.services.seatd.group ];
+      requirePassword = false;
+    }
+    {
+      command = "/run/current-system/sw/bin/reboot";
+      groups = [ config.services.seatd.group ];
+      requirePassword = false;
+    }
+    /*
+    {
+      command = "/run/current-system/sw/bin/brightnessctl";
+      groups = [ config.services.seatd.group ];
+      requirePassword = false;
+    }
+    */
+  ];
 
   # Audio priority
   environment.etc."security/limits.conf".text = ''
@@ -167,7 +192,11 @@ in
     seatd.enable = true;
 
     # For bluetooth
-    bluetooth.enable = true;
+    bluetooth = {
+     enable = true;
+     # Downgrade to make ps5 controller work
+     package = (pkgs.callPackage ./pkgs/bluez/bluez.nix {});
+    };
 
     # For time syncing
     chrony.enable = true;
