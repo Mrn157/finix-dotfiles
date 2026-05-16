@@ -6,10 +6,13 @@ Plans:
 | Goal | Status |
 |--------|--------|
 | Working Config | ✔️ |
+| Audio | ✔️ |
+| Niri | ✔️ |
 | Declarative `.config`  | ✔️ |
 | Declarative ZSH | ✔️ | 
 | Zen Browser | ✔️ |
-| Auto Login | ❌ | 
+| Auto Login without a DM| ❌ |
+| Declarative NVChad | ❌ |
 | CachyOS Kernel | ❌ |
 | Cursor Theming | ❌ |
 | GTK Theming | ❌ |
