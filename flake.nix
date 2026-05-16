@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     finix.url = "github:finix-community/finix?ref=main";
     
     # NVChad
@@ -52,13 +53,27 @@
 
   outputs = inputs@{ self, nixpkgs, finix, home-manager, ... }: 
   let
+    system = "x86_64-linux";
     pkgs = import nixpkgs {
-      system = "x86_64-linux";
+      inherit system;
       config.allowUnfree = true;
       overlays = [
        inputs.nix-cachyos-kernel.overlays.pinned
       ];
     };
+    pkgs-stable = import inputs.nixpkgs-stable {
+      inherit system;
+    };
+    lib-stable = inputs.nixpkgs-stable.lib;
+
+    specialArgs = {
+      modulesPath = toString nixpkgs + "/nixos/modules";
+      inherit system;
+      inputs = inputs // {
+        pkgs-stable = pkgs-stable;
+      };
+    };
+
     extraSpecialArgs = { inherit inputs pkgs; };  # <- passing inputs to the attribute set for home-manager
   in {
     nixosConfigurations.hp = finix.lib.finixSystem {
@@ -90,10 +105,7 @@
 	inputs.hjem.finixModules.default
       ];
 
-      specialArgs = {
-        modulesPath = toString nixpkgs + "/nixos/modules";
-        inherit inputs;
-      };
+      inherit specialArgs;
     };
   };
 }

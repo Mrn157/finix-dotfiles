@@ -11,6 +11,7 @@ Plans:
 | Declarative `.config`  | ✔️ |
 | Declarative ZSH | ✔️ | 
 | Zen Browser | ✔️ |
+| Access to Stable + Unstable packages| ✔️ |
 | Auto Login without a DM| ❌ |
 | Declarative NVChad | ❌ |
 | CachyOS Kernel | ❌ |
