@@ -1,6 +1,20 @@
 # Notes: 
 A test of FinixOS and test how much i can make it more daily driveable
 
+Plans:
+
+| Goal | Status |
+|--------|--------|
+| Working Config | ✔️ |
+| Declarative `.config`  | ✔️ |
+| Declarative ZSH | ✔️ | 
+| Zen Browser | ✔️ |
+| Auto Login | ❌ | 
+| CachyOS Kernel | ❌ |
+| Cursor Theming | ❌ |
+| GTK Theming | ❌ |
+| Steam/Lutris Gaming | ❌ |
+| Waydroid | ❌ |
 
 # My current install method (minimal ISO):
 
@@ -66,11 +80,11 @@ Now here. I use neovim and open two neovims, using `:split`. The generated and t
 nvim hardware-configuration.nix
 :split ./generated-hardware-configuration.nix
 ```
-I then give my user a password using this method for now (find `password =` )
+I then give my user a password
 ```bash
-nvim configuration.nix
-:split | terminal
-mkpasswd -m sha-512 '<desired password>'
+nixos-enter # chroot equivalent of Nix
+passwd mrn1
+exit
 ```
 Then
 ```bash
