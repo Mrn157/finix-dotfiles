@@ -38,7 +38,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
   };
 
   outputs = inputs@{ self, nixpkgs, finix, home-manager, ... }: 
@@ -46,6 +45,9 @@
     pkgs = import nixpkgs {
       system = "x86_64-linux";
       config.allowUnfree = true;
+      overlays = [
+       inputs.nix-cachyos-kernel.overlays.pinned
+      ];
     };
     extraSpecialArgs = { inherit inputs pkgs; };  # <- passing inputs to the attribute set for home-manager
   in {
