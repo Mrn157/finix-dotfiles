@@ -108,6 +108,7 @@ in
     };
 
     niri.enable = true;
+    hyprland.enable = true;
 
     spicetify =
       let
@@ -407,7 +408,7 @@ in
 	};
 
 	# Hyprland Setup
-	".config/hyprland/hyprland.conf" = {
+	".config/hypr/hyprland.conf" = {
 	  source = ./modules/hyprland/hyprland.conf;
           clobber = true;
 	};

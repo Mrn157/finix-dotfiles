@@ -95,6 +95,7 @@
         dhcpcd
         iwd
 	niri
+	hyprland
 	bluetooth
 	rtkit
 	xwayland-satellite
