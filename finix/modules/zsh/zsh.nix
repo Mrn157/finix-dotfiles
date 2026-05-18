@@ -1,34 +1,34 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
 
-programs.zsh = {
-    enable = true;
-    shellAliases = {
-      ll = "ls -l";
-      fetch = "fastfetch";
-      nemod = "(nemo . &)  > /dev/null 2>&1";
-      nix-clean = "sudo nix-collect-garbage -d && nix-collect-garbage -d && nix-store --gc && sudo nix-store --optimise";
-      conf = "cd ~/nix-dotfiles/";
-    };
+  hjem = {
+    extraModules = [
+      inputs.hjem-rum.hjemModules.default
+    ];
+    clobberByDefault = true;
+    users = {
+      mrn1 = {
+        enable = true;
 
-    # Enable oh-my-zsh with some core plugins
-    /* oh-my-zsh = {
-      enable = true; # ctrl +r to get fzf is set here
-      plugins = [ "git" "z" "fzf" ];
-      # Do not set theme here, we load powerlevel10k manually
-    }; */
+	rum = {
 
-    # Extra initialization appended to .zshrc
-    initContent = /* bash */ ''
- 
-     # Load plugins installed via nixpkgs
+	 programs.zsh = {
+		enable = true;
+		initConfig = ''
+
+      HISTFILE=~/.zsh_history
+      HISTSIZE=10000
+      SAVEHIST=50000
+
+      # Load plugins installed via nixpkgs
       source ${pkgs.zsh-fast-syntax-highlighting}/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
       
       source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
       ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-
+      # Fix for fzf-tab not working
+      autoload -U compinit; compinit
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
       source ${pkgs.zsh-you-should-use}/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh
 
@@ -48,8 +48,6 @@ programs.zsh = {
       # Give files/directories colours ( ↓↓  will fix undefined variable)
       zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
 
-      # Binds CTRL + F to accept suggestion BUT only the next word
-      bindkey '^F' forward-word
 
       # KEEPING THIS, MIGHT WANT IN THE FUTURE: Widget mapping on zsh-autosuggestions github README
       # Use PARTIAL_ACCEPT_WIDGETS so it activates when keybind is activated 
@@ -73,10 +71,11 @@ programs.zsh = {
       bindkey "^[[1;5D" backward-word
 
       alias ls="eza"
-      
-      # Ctrl + E for completion
-      bindkey -v "^E" end-of-line
-
+      alias ll="ls -l"
+      alias fetch="fastfetch"
+      alias nemod="(nemo . &)  > /dev/null 2>&1"
+      alias nix-clean="sudo nix-collect-garbage -d && nix-collect-garbage -d && nix-store --gc && sudo nix-store --optimise"
+      alias conf="cd ~/nix-dotfiles/"
 
       source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
       # Append a command directly
@@ -85,7 +84,15 @@ programs.zsh = {
 
       export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
 
-    '';
-  };
+      # Ctrl + E for completion
+      bindkey -v "^E" end-of-line
+      # Binds CTRL + SPACE to accept suggestion BUT only the next word
+      bindkey '^ ' forward-word
+		'';
+	 };
 
+	};
+      };
+    };
+  };
 }
