@@ -102,6 +102,7 @@
 	chronyd
 	fwupd
 	brightnessctl
+	mangowc
 	inputs.spicetify-nix.nixosModules.default
 	inputs.hjem.finixModules.default
       ];

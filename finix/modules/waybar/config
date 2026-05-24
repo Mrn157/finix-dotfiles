@@ -9,7 +9,7 @@
     "modules-center": [
       "hyprland/workspaces",
       "niri/workspaces",
-      "dwl/tags"
+      "ext/workspaces"
     ],
     "modules-right": [
         "wireplumber",
@@ -31,7 +31,7 @@
         "all-outputs": true,
         "on-click": "activate"
     },
-    "dwl/tags": {
+    "ext/workspaces": {
       "disable-scroll": true,
       "all-outputs": false,
       "on-click": "activate"

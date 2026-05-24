@@ -109,6 +109,9 @@ in
     };
 
     niri.enable = true;
+
+    mangowc.enable = true;
+
     hyprland.enable = true;
 
     spicetify =
@@ -235,6 +238,7 @@ in
   };
 
   hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
 
   networking.hostName = "hp"; # Define your hostname.
 
@@ -265,7 +269,7 @@ in
       grim slurp rose-pine-cursor wl-clipboard viewnior tray-tui lsfg-vk-ui lsfg-vk
       rose-pine-hyprcursor fzf gcc gdu protonup-ng protontricks kdiskmark virt-manager qemu_kvm
       mission-center xwayland-satellite wev wgcf wireguard-tools unrar cachix git nixos-rebuild-ng iputils iproute2
-      nix-init nixd python3 yad eza rofi waydroid-helper steam prismlauncher w3m wget bluetui shadow openssh
+      nix-init nixd python3 yad eza rofi waydroid-helper steam prismlauncher w3m wget bluetui shadow openssh openresolv
       ninja meson plocate gnumake mpv tmux p7zip neovide steam-run libsm rofimoji chawan nh hyprlauncher
       dualsensectl pcsx2 mgba reddit-tui openjdk17 emacs android-tools xdg-desktop-portal-gnome impala
       # Audio Setup
@@ -315,6 +319,13 @@ in
 	  source = ./modules/niri/config.kdl;
           clobber = true;
 	};
+
+	# MangoWC Setup
+	".config/mango/config.conf" = {
+	  source = ./modules/mango/config.conf;
+          clobber = true;
+	};
+
 
 	# Foot Setup
 	".config/foot/foot.ini" = {
