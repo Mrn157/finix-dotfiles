@@ -76,6 +76,7 @@ in
     @audio   -   rtprio     95
     @audio   -   nice       -19
     @audio   -   memlock    4194304
+    *   hard   nofile    524288
   '';
 
   # Zsh boot error fix

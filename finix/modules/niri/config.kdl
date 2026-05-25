@@ -286,8 +286,8 @@ layout {
 // See the binds section below for more spawn examples.
 
 
-// Kill all services needed for pipewire and then run them all again
-spawn-sh-at-startup "pipewire & pipewire-pulse & wireplumber"
+// Check if pipewire is already running, if not run the command after the vertical bar
+spawn-sh-at-startup "pgrep -x pipewire || (pipewire & sleep 1 && pipewire-pulse & wireplumber)"
 
 // The bar that I use
 spawn-at-startup  "yambar" 
