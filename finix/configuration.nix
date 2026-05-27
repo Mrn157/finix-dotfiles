@@ -47,6 +47,10 @@ in
 
   finit.runlevel = 3;
 
+  finit.rlimits = {
+  	"nofile" = 524288; # Required for Esync
+  };
+
   finit.services.nix-daemon = {
     environment.CURL_CA_BUNDLE = config.security.pki.caBundle;
   };
@@ -76,7 +80,6 @@ in
     @audio   -   rtprio     95
     @audio   -   nice       -19
     @audio   -   memlock    4194304
-    *   hard   nofile    524288
   '';
 
   # Zsh boot error fix

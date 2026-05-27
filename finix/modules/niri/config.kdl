@@ -287,7 +287,7 @@ layout {
 
 
 // Check if pipewire is already running, if not run the command after the vertical bar
-spawn-sh-at-startup "pgrep -x pipewire || (pipewire & sleep 1 && pipewire-pulse & wireplumber)"
+spawn-sh-at-startup "pgrep -x pipewire || (pipewire & sleep 1 && pipewire-pulse & wireplumber &)"
 
 // The bar that I use
 spawn-at-startup  "yambar" 
