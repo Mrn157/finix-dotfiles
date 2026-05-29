@@ -275,7 +275,7 @@ in
   (with pkgs; [
       neovim wget foot nemo-with-extensions nwg-look git fastfetch appimage-run unzip cargo pavucontrol btop 
       udisks udiskie ffmpeg_6-full waybar pulsemixer swaybg vulkan-tools kdePackages.kdenlive
-      grim slurp rose-pine-cursor wl-clipboard viewnior tray-tui lsfg-vk-ui lsfg-vk dconf-editor dconf
+      grim slurp rose-pine-cursor wl-clipboard qview tray-tui lsfg-vk-ui lsfg-vk dconf-editor dconf
       rose-pine-hyprcursor fzf gcc gdu protonup-ng protontricks kdiskmark virt-manager qemu_kvm
       mission-center xwayland-satellite wev wgcf wireguard-tools unrar cachix git nixos-rebuild-ng iputils iproute2
       nix-init nixd python3 yad eza rofi waydroid-helper steam prismlauncher w3m wget bluetui shadow openssh openresolv
