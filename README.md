@@ -7,6 +7,10 @@ A test of FinixOS and test how much i can make it more daily driveable
 
 `Logo is a temporary alias`
 
+```bash
+alias fastfetch='fastfetch --logo-color-1 "#797979" --logo-color-2 "#e63c4c" --logo-color-3 "#797979" --logo-color-4 "#e63c4c" --logo-color-5 "#797979" --logo-color-6 "#e63c4c" --color-title red'
+```
+
 Plans:
 
 - [x] Working Config
