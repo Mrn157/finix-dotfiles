@@ -25,6 +25,7 @@ Plans:
 - [ ] CachyOS Kernel
 - [x] Cursor Theming
 - [x] GTK Theming
+- [x] Icon Theming
 - [x] Lutris Gaming
 - [x] Steam Gaming
 - [ ] Waydroid
