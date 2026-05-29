@@ -13,17 +13,31 @@
         "padding": {
 	        "top": 1
 	},
+	"color": {
+		"1": "#707070",
+		"2": "#e84050",
+		"3": "#707070",
+		"4": "#e84050",
+		"5": "#707070",
+		"6": "#e84050"
+	}
     },
     "display": {
         "separator": "  "
     },
     "modules": [
 	"break",
-	"title",
+        {
+            "type": "title",
+            "color": {
+		    "user": "red",
+		    "host": "red"
+	    }
+        },
         {
             "type": "os",
             "key": "",
-            "keyColor": "35",  
+            "keyColor": "35"  
         },
         {
             "type": "kernel",
@@ -56,3 +70,4 @@
         "break",
     ]
 }
+
