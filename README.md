@@ -1,6 +1,12 @@
 # Notes: 
 A test of FinixOS and test how much i can make it more daily driveable
 
+## Screenshot (As of May 29 2026)
+
+![Screenshot](https://i.postimg.cc/VkqhrZGq/Screenshot-from-2026-05-29-23-10-08.png)
+
+`Logo is a temporary alias`
+
 Plans:
 
 - [x] Working Config
@@ -16,7 +22,7 @@ Plans:
 - [x] Cursor Theming
 - [x] GTK Theming
 - [x] Lutris Gaming
-- [ ] Steam Gaming
+- [x] Steam Gaming
 - [ ] Waydroid
 
 
@@ -84,14 +90,15 @@ Now here. I use neovim and open two neovims, using `:split`. The generated and t
 nvim hardware-configuration.nix
 :split ./generated-hardware-configuration.nix
 ```
+Then
+```bash
+nixos-install --root /mnt --flake .#hp
+```
 I then give my user a password
 ```bash
 nixos-enter # chroot equivalent of Nix
 passwd mrn1
 exit
 ```
-Then
-```bash
-nixos-install --root /mnt --flake .#hp
 
 You can now exit the installation ISO and boot
