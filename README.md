@@ -3,22 +3,22 @@ A test of FinixOS and test how much i can make it more daily driveable
 
 Plans:
 
-| Goal | Status |
-|--------|--------|
-| Working Config | ✔️ |
-| Audio | ✔️ |
-| Niri | ✔️ |
-| Declarative `.config`  | ✔️ |
-| Declarative ZSH | ✔️ | 
-| Zen Browser | ✔️ |
-| Access to Stable + Unstable packages| ✔️ |
-| Auto Login without a DM| ❌ |
-| Declarative NVChad | ❌ |
-| CachyOS Kernel | ❌ |
-| Cursor Theming | ❌ |
-| GTK Theming | ❌ |
-| Steam/Lutris Gaming | ❌ |
-| Waydroid | ❌ |
+- [x] Working Config
+- [x] Audio
+- [x] Niri
+- [x] Declarative `.config`
+- [x] Declarative ZSH
+- [x] Zen Browser
+- [x] Access to Stable + Unstable packages 
+- [ ] Auto Login without a DM
+- [ ] Declarative nvim
+- [ ] CachyOS Kernel
+- [x] Cursor Theming
+- [x] GTK Theming
+- [x] Lutris Gaming
+- [ ] Steam Gaming
+- [ ] Waydroid
+
 
 # My current install method (minimal ISO):
 

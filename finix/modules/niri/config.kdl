@@ -333,7 +333,7 @@ animations {
 
 cursor {
   xcursor-size 4
-  xcursor-theme "BreezeX-RoséPine"
+  xcursor-theme "BreezeX-RosePine-Linux"
 }
 
 // Window rules let you adjust behavior for individual windows.

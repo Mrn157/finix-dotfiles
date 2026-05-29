@@ -194,7 +194,12 @@ in
 
     sysklogd.enable = true;
 
-    dbus.enable = true;
+    dbus = {
+      packages = [
+        pkgs.dconf
+      ];
+      enable = true;
+    };
 
     mdevd.enable = true;
 
@@ -270,7 +275,7 @@ in
   (with pkgs; [
       neovim wget foot nemo-with-extensions nwg-look git fastfetch appimage-run unzip cargo pavucontrol btop 
       udisks udiskie ffmpeg_6-full waybar pulsemixer swaybg vulkan-tools kdePackages.kdenlive
-      grim slurp rose-pine-cursor wl-clipboard viewnior tray-tui lsfg-vk-ui lsfg-vk
+      grim slurp rose-pine-cursor wl-clipboard viewnior tray-tui lsfg-vk-ui lsfg-vk dconf-editor dconf
       rose-pine-hyprcursor fzf gcc gdu protonup-ng protontricks kdiskmark virt-manager qemu_kvm
       mission-center xwayland-satellite wev wgcf wireguard-tools unrar cachix git nixos-rebuild-ng iputils iproute2
       nix-init nixd python3 yad eza rofi waydroid-helper steam prismlauncher w3m wget bluetui shadow openssh openresolv
@@ -283,6 +288,8 @@ in
       inputs.zen-browser.packages."${system}".default
 
       (pkgs.callPackage ./pkgs/yambar/yambar-pkg.nix {})
+      (pkgs.callPackage ./pkgs/rosepine-gtk-theme/rosepine-gtk-theme.nix {})
+      (pkgs.callPackage ./pkgs/dracula-circle-icon-theme/dracula-circle-icon-theme.nix {})
       # (pkgs.openldap.overrideAttrs (oldAttrs: {
       # doCheck = !pkgs.stdenv.hostPlatform.isi686;
       # }))
@@ -378,6 +385,32 @@ in
 	  source = ./modules/fastfetch/config.jsonc;
           clobber = true;
 	};
+
+	# GTK 3.0
+	".config/gtk-3.0" = {
+	  source = ./modules/theme/gtk-3.0;
+	};
+
+	# GTK 4.0
+	".config/gtk-4.0" = {
+	  source = ./modules/theme/gtk-4.0;
+	};
+
+	# GTKRC-2.0
+	".gtkrc-2.0" = {
+	  source = ./modules/theme/.gtkrc-2.0;
+	};
+
+	# DCONF
+	".config/dconf" = {
+	  source = ./modules/theme/dconf;
+	};
+
+	# XSETTINGSD
+	".config/xsettingsd" = {
+	  source = ./modules/theme/xsettingsd;
+	};
+
 
 
 	};
