@@ -15,7 +15,7 @@
 
 	 programs.zsh = {
 		enable = true;
-		initConfig = ''
+		initConfig = /* bash */ ''
 
       HISTFILE=~/.zsh_history
       HISTSIZE=10000
@@ -84,10 +84,16 @@
 
       export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
 
-      # Ctrl + E for completion
+
+      # Ctrl + E for full completion
       bindkey -v "^E" end-of-line
       # Binds CTRL + SPACE to accept suggestion BUT only the next word
       bindkey '^ ' forward-word
+
+      # Fixes my issue about zsh, deleting/auto completing the whole directory path instead of one by one when using forward-word
+      # If I wanted to get that back, Add / in the string
+      WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
 		'';
 	 };
 
