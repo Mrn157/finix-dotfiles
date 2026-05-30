@@ -51,7 +51,7 @@ return {
         additional_vim_regex_highlighting = false,
       },
    		ensure_installed = {
-   			"vim", "lua", "vimdoc",
+   			"vim", "lua", "vimdoc", "zsh",
         "html", "css", "bash", "nix",
    		},
    	},

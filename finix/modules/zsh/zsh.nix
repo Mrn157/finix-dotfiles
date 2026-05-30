@@ -15,7 +15,8 @@
 
 	 programs.zsh = {
 		enable = true;
-		initConfig = /* bash */ ''
+    # To get the language injection working, either do :TSInstallAll or :TSInstall zsh nix
+		initConfig = /* zsh */ ''
 
       HISTFILE=~/.zsh_history
       HISTSIZE=10000
