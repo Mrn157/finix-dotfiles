@@ -1,26 +1,27 @@
 { inputs, ... }:
 
 {
-
   hjem = {
     extraModules = [
       inputs.hjem-rum.hjemModules.default
     ];
+    clobberByDefault = true;
     users = {
       mrn1 = {
-        enable = true;
-
         files = {
-          ".config/waybar" = { 
-            source = ../waybar;
+          ".config/nvim/init.lua" = {
+            source = ./nvim/init.lua;
+            clobber = true;
+          };
+          ".config/nvim/lua" = {
+            source = ./nvim/lua;
             clobber = true;
           };
         };
       };
     };
   };
+
+
 }
-
-
-
 

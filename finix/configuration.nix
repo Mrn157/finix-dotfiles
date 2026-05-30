@@ -42,6 +42,7 @@ in
       ./modules/waybar
       ./modules/yambar
       ./modules/wallpaper
+      ./modules/neovim/default.nix
     ];
 
   # Use latest kernel.
@@ -288,14 +289,22 @@ in
   # $ nix search wget
   environment.systemPackages =
   (with pkgs; [
-      neovim wget foot nemo-with-extensions nwg-look git fastfetch appimage-run unzip cargo pavucontrol btop 
+      wget foot nemo-with-extensions nwg-look git fastfetch appimage-run unzip cargo pavucontrol btop 
       udisks udiskie ffmpeg_6-full waybar pulsemixer swaybg vulkan-tools kdePackages.kdenlive
       grim slurp rose-pine-cursor wl-clipboard qview tray-tui lsfg-vk-ui lsfg-vk dconf-editor dconf
       rose-pine-hyprcursor fzf gcc gdu protonup-ng protontricks kdiskmark virt-manager qemu_kvm
       mission-center xwayland-satellite wev wgcf wireguard-tools unrar cachix git nixos-rebuild-ng iputils iproute2
       nix-init nixd python3 yad eza rofi waydroid-helper steam prismlauncher w3m wget bluetui shadow openssh openresolv
-      ninja meson plocate gnumake mpv tmux p7zip neovide steam-run libsm rofimoji chawan nh hyprlauncher
+      ninja meson plocate gnumake mpv tmux p7zip steam-run libsm rofimoji chawan nh hyprlauncher
       dualsensectl pcsx2 mgba reddit-tui openjdk17 emacs android-tools xdg-desktop-portal-gnome impala
+
+      # Neovim Stuff
+      neovim neovide docker-compose-language-service dockerfile-language-server emmet-language-server nixd nil
+      (python3.withPackages(ps: with ps; [
+        python-lsp-server
+        flake8
+      ]))
+
       # Audio Setup
       pipewire'
       wireplumber'
