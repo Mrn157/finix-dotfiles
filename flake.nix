@@ -14,6 +14,9 @@
       "mrn157.cachix.org-1:A3KuzqTH/AeTFpDsu7Fql7KpZBJvFCkfNqxkL2+DZlc="
       "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
     ];
+    # Added due to my system lagging insanely when compiling
+    cores = 2;
+    max-jobs = 2;
   };
 
   inputs = {
