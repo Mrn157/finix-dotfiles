@@ -1,9 +1,9 @@
 # Notes: 
 A test of FinixOS and test how much i can make it more daily driveable
 
-## Screenshot (As of May 29 2026)
+## Screenshot (As of May 30 2026)
 
-![Screenshot](https://i.postimg.cc/VkqhrZGq/Screenshot-from-2026-05-29-23-10-08.png)
+![Screenshot](https://i.postimg.cc/5ydc5Sn2/img-2026-05-30-14-07-00.png)
 
 Plans:
 
@@ -16,7 +16,7 @@ Plans:
 - [x] Access to Stable + Unstable packages 
 - [ ] Auto Login without a DM
 - [ ] Declarative nvim
-- [ ] CachyOS Kernel
+- [x] CachyOS Kernel
 - [x] Cursor Theming
 - [x] GTK Theming
 - [x] Icon Theming
