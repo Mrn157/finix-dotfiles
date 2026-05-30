@@ -29,6 +29,18 @@ in
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./modules/zsh/zsh.nix
+      ./modules/anyrun
+      ./modules/dwl
+      ./modules/fastfetch
+      ./modules/foot
+      ./modules/hyprland
+      ./modules/mango
+      ./modules/niri
+      ./modules/rofi
+      ./modules/terminal
+      ./modules/theme
+      ./modules/waybar
+      ./modules/yambar
     ];
 
   # Use latest kernel.
@@ -301,121 +313,5 @@ in
   (with inputs.pkgs-stable; [
     lutris-free
   ]);
-
-  # For configuring user config files
-
-  hjem = {
-    extraModules = [
-      inputs.hjem-rum.hjemModules.default
-    ];
-    clobberByDefault = true;
-    users = {
-      mrn1 = {
-        enable = true;
-
-        files = {
-
-	# Bash Setup
-        ".bash_profile" = {
-	  source = ./modules/terminal/.bash_profile;
-	};
-
-        # Wallpaper Setup
-        "Pictures/wallpaper.jpg" = {
-	  source = ./modules/wallpaper.jpg;
-	};
-
-	# Niri Setup
-	".config/niri/config.kdl" = {
-	  source = ./modules/niri/config.kdl;
-          clobber = true;
-	};
-
-	# MangoWC Setup
-	".config/mango/config.conf" = {
-	  source = ./modules/mango/config.conf;
-          clobber = true;
-	};
-
-
-	# Foot Setup
-	".config/foot/foot.ini" = {
-	  source = ./modules/foot/foot.ini;
-          clobber = true;
-	};
-
-	# Hyprland Setup
-	".config/hypr/hyprland.conf" = {
-	  source = ./modules/hyprland/hyprland.conf;
-          clobber = true;
-	};
-
-	# Rofi Setup
-	".config/rofi/config.rasi" = {
-	  source = ./modules/rofi/rofi/config.rasi;
-          clobber = true;
-	};
-
-	# Dwl Setup
-	".config/dwl/config.def.h" = {
-	  source = ./modules/dwl/config.def.h;
-          clobber = true;
-	};
-
-	# Anyrun Setup
-	".config/anyrun/style.css" = { 
- 	  source = ./modules/anyrun/style.css;
-          clobber = true;
-	};
-
-	# Yambar Setup
-	".config/yambar" = { 
-	  source = ./modules/yambar;
-          clobber = true;
-	};
-
-	# Waybar Setup
-	".config/waybar" = { 
-	  source = ./modules/waybar;
-          clobber = true;
-	};
-
-	# Fastfetch Setup
-	".config/fastfetch/config.jsonc" = {
-	  source = ./modules/fastfetch/config.jsonc;
-          clobber = true;
-	};
-
-	# GTK 3.0
-	".config/gtk-3.0" = {
-	  source = ./modules/theme/gtk-3.0;
-	};
-
-	# GTK 4.0
-	".config/gtk-4.0" = {
-	  source = ./modules/theme/gtk-4.0;
-	};
-
-	# GTKRC-2.0
-	".gtkrc-2.0" = {
-	  source = ./modules/theme/.gtkrc-2.0;
-	};
-
-	# DCONF
-	".config/dconf" = {
-	  source = ./modules/theme/dconf;
-	};
-
-	# XSETTINGSD
-	".config/xsettingsd" = {
-	  source = ./modules/theme/xsettingsd;
-	};
-
-
-
-	};
-      };
-    };
-  };
 
 }
