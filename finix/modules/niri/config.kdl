@@ -620,7 +620,9 @@ binds {
     // Expel the bottom window from the focused column to the right.
     Mod+Period { expel-window-from-column; }
 
-    Mod+Shift+Period { spawn-sh "rofimoji --selector-args '-theme ~/.config/rofi/config.rasi'"; }
+    Mod+Shift+Period { spawn-sh "rofimoji --selector-args '-theme ~/.config/rofi/config.rasi' --prompt  --use-icons"; }
+    Mod+Shift+V { spawn-sh "cliphist list | rofi -dmenu -theme ~/.config/rofi/config.rasi -p  | cliphist decode | wl-copy
+"; } 
 
     Mod+R { switch-preset-column-width; }
     // Cycling through the presets in reverse order is also possible.
@@ -657,7 +659,7 @@ binds {
 
     // Move the focused window between the floating and the tiling layout.
     Mod+V       { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+Shift+Z { switch-focus-between-floating-and-tiling; }
 
     // Toggle tabbed column display mode.
     // Windows in this column will appear as vertical tabs,
