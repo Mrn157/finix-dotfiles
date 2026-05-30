@@ -295,7 +295,7 @@ in
       grim slurp rose-pine-cursor wl-clipboard qview tray-tui lsfg-vk-ui lsfg-vk dconf-editor dconf
       rose-pine-hyprcursor fzf gcc gdu protonup-ng protontricks kdiskmark virt-manager qemu_kvm
       mission-center xwayland-satellite wev wgcf wireguard-tools unrar cachix git nixos-rebuild-ng iputils iproute2
-      nix-init nixd python3 yad eza rofi waydroid-helper steam prismlauncher w3m wget bluetui shadow openssh openresolv
+      nix-init nixd python3 yad eza rofi waydroid-helper waydroid steam prismlauncher w3m wget bluetui shadow openssh openresolv
       ninja meson plocate gnumake mpv tmux p7zip steam-run libsm rofimoji chawan nh hyprlauncher
       dualsensectl pcsx2 mgba reddit-tui openjdk17 emacs android-tools xdg-desktop-portal-gnome impala
 
@@ -315,6 +315,7 @@ in
       (pkgs.callPackage ./pkgs/yambar/yambar-pkg.nix {})
       (pkgs.callPackage ./pkgs/rosepine-gtk-theme/rosepine-gtk-theme.nix {})
       (pkgs.callPackage ./pkgs/dracula-circle-icon-theme/dracula-circle-icon-theme.nix {})
+      (pkgs.callPackage ./pkgs/cage-xtmapper/cage-xtmapper.nix {})
       # (pkgs.openldap.overrideAttrs (oldAttrs: {
       # doCheck = !pkgs.stdenv.hostPlatform.isi686;
       # }))

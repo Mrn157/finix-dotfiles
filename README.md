@@ -22,8 +22,15 @@ Plans:
 - [x] Icon Theming
 - [x] Lutris Gaming
 - [x] Steam Gaming
-- [ ] Waydroid
+- [x] Waydroid
 
+# Commands to remember for me:
+
+## Waydroid
+```bash
+sudo waydroid container start
+waydroid show-full-ui
+```
 
 # My current install method (minimal ISO):
 
