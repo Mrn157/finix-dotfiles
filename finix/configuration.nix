@@ -42,7 +42,8 @@ in
       ./modules/waybar
       ./modules/yambar
       ./modules/wallpaper
-      ./modules/neovim/default.nix
+      ./modules/neovim
+      ./modules/btop
     ];
 
   # Use latest kernel.
@@ -299,7 +300,7 @@ in
       dualsensectl pcsx2 mgba reddit-tui openjdk17 emacs android-tools xdg-desktop-portal-gnome impala
 
       # Neovim Stuff
-      neovim neovide docker-compose-language-service dockerfile-language-server emmet-language-server nixd nil
+      neovim neovide docker-compose-language-service dockerfile-language-server emmet-language-server nixd nil ripgrep
       (python3.withPackages(ps: with ps; [
         python-lsp-server
         flake8
