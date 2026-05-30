@@ -14,8 +14,8 @@ hjem = {
         files = {
 
 	 # Rofi Setup
-	 ".config/rofi/config.rasi" = {
-	   source = ./rofi/config.rasi;
+	 ".config/rofi" = {
+	   source = ./rofi;
            clobber = true;
 	 };
 

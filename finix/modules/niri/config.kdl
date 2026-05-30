@@ -621,8 +621,7 @@ binds {
     Mod+Period { expel-window-from-column; }
 
     Mod+Shift+Period { spawn-sh "rofimoji --selector-args '-theme ~/.config/rofi/config.rasi' --prompt  --use-icons"; }
-    Mod+Shift+V { spawn-sh "cliphist list | rofi -dmenu -theme ~/.config/rofi/config.rasi -p  | cliphist decode | wl-copy
-"; } 
+    Mod+Shift+V { spawn-sh "cliphist list | rofi -modi :~/.config/rofi/cliphist-rofi-img -show  -config ~/.config/rofi/clipboard.rasi -display-columns 2 -theme ./clipboard.rasi | cliphist decode | wl-copy"; } 
 
     Mod+R { switch-preset-column-width; }
     // Cycling through the presets in reverse order is also possible.
