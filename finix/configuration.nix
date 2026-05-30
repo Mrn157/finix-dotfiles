@@ -41,6 +41,7 @@ in
       ./modules/theme
       ./modules/waybar
       ./modules/yambar
+      ./modules/wallpaper
     ];
 
   # Use latest kernel.
