@@ -294,6 +294,8 @@ spawn-at-startup  "yambar"
 
 // My wallpaper
 spawn-sh-at-startup "swaybg -i ~/Pictures/wallpaper.jpg"
+
+spawn-sh-at-startup "wl-paste --watch cliphist store"
 // spawn-sh-at-startup "python3 ~/.config/niri/float.py"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
