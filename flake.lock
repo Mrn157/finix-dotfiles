@@ -129,15 +129,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1779363569,
-        "narHash": "sha256-ygBeOzovrNRdlIdOFC3i6Ms4Y7Z0YOCl2Po1lufRL8A=",
-        "owner": "r0chd",
+        "lastModified": 1780199518,
+        "narHash": "sha256-NhtWx0youXYRvcqtL+sjdqoZinMcnjcwRsh6eBJUZLg=",
+        "owner": "feel-co",
         "repo": "hjem",
-        "rev": "9e1684824ec06fd749ff88a7de677e2aaaa89035",
+        "rev": "ffa433dd86e761de45ef985d4293f31a4d2a775d",
         "type": "github"
       },
       "original": {
-        "owner": "r0chd",
+        "owner": "feel-co",
         "repo": "hjem",
         "type": "github"
       }

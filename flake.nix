@@ -41,7 +41,7 @@
 
     # Hjem
     hjem = {
-      url = "github:r0chd/hjem";
+      url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
