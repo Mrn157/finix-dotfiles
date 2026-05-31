@@ -1,7 +1,12 @@
-# Notes: 
-A test of FinixOS and test how much i can make it more daily driveable
+https://github.com/finix-community/finix
 
-## Screenshot (As of May 30 2026)
+# Notes: 
+
+My personal finix dotfiles
+
+---
+
+## Screenshot
 
 ![Screenshot](https://i.postimg.cc/5ydc5Sn2/img-2026-05-30-14-07-00.png)
 
