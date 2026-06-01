@@ -233,6 +233,11 @@ in
      enable = true;
      # Downgrade to make ps5 controller work
      package = (pkgs.callPackage ./pkgs/bluez/bluez.nix {});
+     settings = {
+       General = {
+         Experimental = true;
+       };
+     };
     };
 
     # For time syncing
