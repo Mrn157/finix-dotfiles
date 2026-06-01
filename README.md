@@ -1,8 +1,14 @@
-https://github.com/finix-community/finix
-
 # Notes: 
 
 My personal finix dotfiles
+
+Useful links:
+
+[Finix Repo](https://github.com/finix-community/finix) \
+[Finix Options](https://finix-community.github.io/finix/options.html) \
+[Finix Minimal Config and Installation Guide](https://codeberg.org/vitrial/finix-config) \
+[Creator's Config](https://github.com/aanderse/finix-config) \
+[Finix Config Example](https://github.com/deathbymanatee/finix-config)
 
 ---
 
