@@ -156,8 +156,6 @@ in
        enable = true;
       };
 
-      brightnessctl.enable = true;
-
   };
 
   boot = {
@@ -200,6 +198,13 @@ in
       mouse[0-9]+ root:input 660 =input/
 
       rfkill      root:${config.services.seatd.group} 660
+
+      # For using brillo/brightness commands without su privileges
+      -SUBSYSTEM=backlight;.* root:root 0600 @chgrp video /sys/class/backlight/$MDEV/brightness
+      -SUBSYSTEM=backlight;.* root:root 0600 @chmod g+w /sys/class/backlight/$MDEV/brightness
+
+      -SUBSYSTEM=leds;.* root:root 0600 @chgrp input /sys/class/leds/$MDEV/brightness
+      -SUBSYSTEM=leds;.* root:root 0600 @chmod g+w /sys/class/leds/$MDEV/brightness
     ''
   ];
 
@@ -305,7 +310,7 @@ in
       nix-init nixd python3 yad eza rofi waydroid-helper waydroid steam prismlauncher w3m wget bluetui shadow openssh 
       ninja meson plocate gnumake mpv tmux p7zip steam-run libsm rofimoji chawan nh hyprlauncher zsh
       dualsensectl pcsx2 mgba reddit-tui openjdk17 emacs android-tools xdg-desktop-portal-gnome impala
-      cliphist openresolv nodejs obs-studio peazip
+      cliphist openresolv nodejs obs-studio peazip brillo
 
       # Neovim Stuff
       neovim neovide docker-compose-language-service dockerfile-language-server emmet-language-server nixd nil ripgrep

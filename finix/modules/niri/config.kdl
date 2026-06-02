@@ -295,7 +295,11 @@ spawn-at-startup  "yambar"
 // My wallpaper
 spawn-sh-at-startup "swaybg -i ~/Pictures/wallpaper.jpg"
 
+// Cliphist enable
 spawn-sh-at-startup "wl-paste --watch cliphist store"
+
+// Brillo restore brightness
+spawn-sh-at-startup "brillo -I"
 // spawn-sh-at-startup "python3 ~/.config/niri/float.py"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
@@ -443,10 +447,12 @@ binds {
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
     // but you need to manually put each argument in separate "" quotes.
-    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
-    XF86HomePage          allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
-    XF86Mail              allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
+
+    // In percentages, -A = increase and U = decrease
+    XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "brillo -A 10"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "brillo -U 10"; }
+    XF86HomePage          allow-when-locked=true { spawn-sh "brillo -A 5"; }
+    XF86Mail              allow-when-locked=true { spawn-sh "brillo -U 5"; }
     // Previous yambar gets closed, then yambar gets launched
     Mod+Grave { spawn-sh "pkill yambar; yambar"; }
 
@@ -690,7 +696,7 @@ binds {
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     // The quit action will show a confirmation dialog to avoid accidental exits.
-    Mod+Shift+M { quit skip-confirmation=true; }
+    Mod+Shift+M { spawn-sh "brillo -O && niri msg action quit -s"; }
     Ctrl+Alt+Delete { quit; }
 
     // Powers off the monitors. To turn them back on, do any input like
