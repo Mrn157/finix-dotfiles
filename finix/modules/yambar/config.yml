@@ -101,8 +101,8 @@ bar:
                   # deco: *std_overline
                   text: "{percent}%"
                   on-click:
-                            wheel-up: brightnessctl set 1%+
-                            wheel-down: brightnessctl set 1%-
+                            wheel-up: brillo -A 1%
+                            wheel-down: brillo -U 1%
     - label:
         content:
           string:

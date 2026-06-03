@@ -449,10 +449,11 @@ binds {
     // but you need to manually put each argument in separate "" quotes.
 
     // In percentages, -A = increase and U = decrease
-    XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "brillo -A 10"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "brillo -U 10"; }
-    XF86HomePage          allow-when-locked=true { spawn-sh "brillo -A 5"; }
-    XF86Mail              allow-when-locked=true { spawn-sh "brillo -U 5"; }
+    // Restarts yambar due to yambar being unable to detect when brightness changes
+    XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "pkill yambar; brillo -A 10 && yambar"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "pkill yambar; brillo -U 10 && yambar"; }
+    XF86HomePage          allow-when-locked=true { spawn-sh "pkill yambar; brillo -A 5 && yambar"; }
+    XF86Mail              allow-when-locked=true { spawn-sh "pkill yambar; brillo -U 5 && yambar"; }
     // Previous yambar gets closed, then yambar gets launched
     Mod+Grave { spawn-sh "pkill yambar; yambar"; }
 
