@@ -73,7 +73,6 @@
 
       alias ls="eza"
       alias ll="ls -l"
-      alias fetch="fastfetch"
       alias nemod="(nemo . &)  > /dev/null 2>&1"
       alias nix-clean="sudo nix-collect-garbage -d && nix-collect-garbage -d && nix-store --gc && sudo nix-store --optimise"
       alias conf="cd ~/nix-dotfiles/"
