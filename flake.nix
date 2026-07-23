@@ -102,6 +102,7 @@
           nixpkgs.pkgs = nixpkgs.lib.mkDefault pkgs;
         }
         (./finix/configuration.nix)
+          flatpak
           nix-daemon
           openssh
           sysklogd

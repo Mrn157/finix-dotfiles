@@ -233,6 +233,8 @@ in
 
     seatd.enable = true;
 
+    flatpak.enable = true;
+
     # For bluetooth
     bluetooth = {
      enable = true;
@@ -310,7 +312,7 @@ in
       nix-init nixd python3 yad eza rofi waydroid-helper waydroid steam prismlauncher w3m wget bluetui shadow openssh 
       ninja meson plocate gnumake mpv tmux p7zip steam-run libsm rofimoji chawan nh hyprlauncher zsh
       dualsensectl pcsx2 mgba reddit-tui openjdk17 emacs android-tools xdg-desktop-portal-gnome impala
-      cliphist openresolv nodejs obs-studio peazip brillo wl-kbptr hydralauncher abaddon qutebrowser
+      cliphist openresolv nodejs obs-studio peazip brillo wl-kbptr hydralauncher abaddon qutebrowser gamescope
 
       # Neovim Stuff
       neovim neovide docker-compose-language-service dockerfile-language-server emmet-language-server nixd nil ripgrep

@@ -92,7 +92,7 @@
 
       # Fixes my issue about zsh, deleting/auto completing the whole directory path instead of one by one when using forward-word
       # If I wanted to get that back, Add / in the string
-      WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+      WORDCHARS=""
 
 		'';
 	 };
