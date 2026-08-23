@@ -58,7 +58,7 @@ in
   ];
 
   # Fixes the blink after boot (which messes up niri and just makes a blank screen if run before the blink)
-  boot.kernelModules = [ "amdgpu" ];
+  boot.kernelModules = [ "amdgpu" "ntsync"];
   boot.initrd.kernelModules = [ "amdgpu" ];
 
 
@@ -237,8 +237,6 @@ in
     # For bluetooth
     bluetooth = {
      enable = true;
-     # Downgrade to make ps5 controller work
-     package = (pkgs.callPackage ./pkgs/bluez/bluez.nix {});
      settings = {
        General = {
          Experimental = true;
