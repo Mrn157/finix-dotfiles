@@ -58,7 +58,7 @@ in
   ];
 
   # Fixes the blink after boot (which messes up niri and just makes a blank screen if run before the blink)
-  boot.kernelModules = [ "amdgpu" "ntsync"];
+  boot.kernelModules = [ "amdgpu" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
 
 
@@ -225,6 +225,7 @@ in
     };
 
     mdevd.enable = true;
+    mdevd.nlgroups = 4;
 
     dhcpcd.enable = true;
 
@@ -240,6 +241,9 @@ in
      settings = {
        General = {
          Experimental = true;
+       };
+       Policy = {
+         AutoEnable = true;
        };
      };
     };
