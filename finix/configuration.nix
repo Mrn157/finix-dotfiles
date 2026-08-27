@@ -57,10 +57,6 @@ in
     "loglevel=3"
   ];
 
-  # Fixes the blink after boot (which messes up niri and just makes a blank screen if run before the blink)
-  boot.kernelModules = [ "amdgpu" ];
-  boot.initrd.kernelModules = [ "amdgpu" ];
-
 
 
   finit.runlevel = 3;
@@ -313,7 +309,7 @@ in
       nix-init nixd python3 yad eza rofi waydroid-helper waydroid steam prismlauncher w3m wget bluetui shadow openssh 
       ninja meson plocate gnumake mpv tmux p7zip steam-run libsm rofimoji chawan nh hyprlauncher zsh tailscale
       dualsensectl pcsx2 mgba reddit-tui openjdk17 emacs android-tools xdg-desktop-portal-gnome impala bolt-launcher
-      cliphist openresolv nodejs obs-studio peazip brillo wl-kbptr hydralauncher abaddon qutebrowser gamescope xdotool
+      cliphist openresolv nodejs obs-studio peazip brillo wl-kbptr hydralauncher qutebrowser gamescope xdotool
 
       # Neovim Stuff
       neovim neovide docker-compose-language-service dockerfile-language-server emmet-language-server nixd nil ripgrep

@@ -35,6 +35,31 @@ Plans:
 - [x] Steam Gaming
 - [x] Waydroid
 
+# Stuff you want to know
+
+- My bluetooth mouse, which is the Logitech M196, connects but cursor doesn't move
+
+My Solution: Set 
+```nix
+boot.initrd.kernelModules = [ "uhid" ];
+```
+
+- When I unplug and plug my USB peripherals such as wired mouse and wired keyboard it connects but clicking, typing, etc doesn't work.
+
+My Solution: Set 
+```nix
+mdevd.nlgroups = 4;
+```
+
+- Fixes the blink after boot (which messes up niri and just makes a blank screen if run before the blink)
+
+My Solution: Set
+```nix
+boot.initrd.kernelModules = [ "amdgpu"];
+```
+
+---
+
 # Commands to remember for me:
 
 ## Waydroid

@@ -6,7 +6,8 @@
 {
 
   boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ "ntsync" "uhid" ];
+  # ntsync to work, uhid for my bluetooth mouse, amdgpu to remove blink at startup
+  boot.initrd.kernelModules = [ "ntsync" "uhid" "amdgpu"];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
