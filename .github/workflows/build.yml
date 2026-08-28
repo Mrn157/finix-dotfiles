@@ -12,10 +12,9 @@ jobs:
         nix_path: nixpkgs=channel:nixos-unstable
     - uses: cachix/cachix-action@v14
       with:
-        name: mycache
+        name: mrn157
         # If you chose signing key for write access
-        signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
+        # signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
         # If you chose API tokens for write access OR if you have a private cache
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - run: nix build .#nixosConfigurations.hp.config.system.build.toplevel
-    - run: nix-shell --run "echo OK"
+    - run: nix build .#pineconemc

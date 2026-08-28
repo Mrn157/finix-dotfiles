@@ -95,6 +95,14 @@
 
   extraSpecialArgs = { inherit inputs pkgs; };  # <- passing inputs to the attribute set for home-manager
     in {
+
+      # Packages to cache to cachix
+      packages.${system} = {
+        pineconemc = inputs.pineconemc.packages."${system}".default;
+      };
+
+
+
       nixosConfigurations.hp = finix.lib.finixSystem {
         inherit (pkgs) lib;
 
