@@ -4,13 +4,15 @@
   nixConfig = {
     substituters = [
       "https://cache.nixos.org/"
-        "https://mrn157.cachix.org/"
-        "https://attic.xuyh0120.win/lantian"
+      "https://mrn157.cachix.org/"
+      "https://finix.cachix.org/"
+      "https://attic.xuyh0120.win/lantian"
     ];
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-        "mrn157.cachix.org-1:6bbBYkXBDwcPDtffeN+83a1/QqnuHVmS1Ubg2qXPE1A="
-        "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+      "mrn157.cachix.org-1:6bbBYkXBDwcPDtffeN+83a1/QqnuHVmS1Ubg2qXPE1A="
+      "finix.cachix.org-1:0ejikHDeCp0UErsduUUHcg9IJczY2/h2e5132Z/As/c="
+      "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
     ];
 # Added due to my system lagging insanely when compiling
     cores = 2;
@@ -131,6 +133,8 @@
           fwupd
           brightnessctl
           mangowc
+          pipewire
+          wireplumber
           inputs.spicetify-nix.nixosModules.default
           inputs.hjem.finixModules.default
           ];

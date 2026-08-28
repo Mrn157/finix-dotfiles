@@ -1,29 +1,5 @@
 { config, pkgs, inputs, lib, ... }:
 
-
-# Audio Setup
-
-let
-  pipewire' =
-    (pkgs.pipewire.override (
-      lib.optionalAttrs config.services.mdevd.enable {
-        enableSystemd = false;
-        udev = pkgs.libudev-zero;
-      }
-    )).overrideAttrs
-      (o: {
-        # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/2398#note_2967898
-        patches = o.patches or [ ] ++ lib.optionals config.services.mdevd.enable [ ./pkgs/pipewire/pipewire.patch ];
-      });
-
-  wireplumber' = pkgs.wireplumber.override (
-    lib.optionalAttrs config.services.mdevd.enable {
-      pipewire = pipewire';
-    }
-  );
-
-in
-
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -112,6 +88,14 @@ in
   };
 
   programs = {
+    pipewire = {
+      enable = true;
+    };
+
+    wireplumber = {
+      enable = true;
+    };
+
     limine = {
       enable = true;
       settings.editor_enabled = true; # Disable on systems that need security
@@ -322,10 +306,6 @@ in
       # For theming
       dconf-editor dconf
 
-
-      # Audio Setup
-      pipewire'
-      wireplumber'
       inputs.helium.packages.${system}.default 
       inputs.zen-browser.packages."${system}".default
       inputs.pineconemc.packages."${system}".default
