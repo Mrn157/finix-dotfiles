@@ -328,6 +328,7 @@ in
       wireplumber'
       inputs.helium.packages.${system}.default 
       inputs.zen-browser.packages."${system}".default
+      inputs.pineconemc.packages."${system}".default
 
       (pkgs.callPackage ./pkgs/yambar/yambar-pkg.nix {})
       (pkgs.callPackage ./pkgs/rosepine-gtk-theme/rosepine-gtk-theme.nix {})

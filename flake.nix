@@ -9,7 +9,7 @@
     ];
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-        "mrn157.cachix.org-1:A3KuzqTH/AeTFpDsu7Fql7KpZBJvFCkfNqxkL2+DZlc="
+        "mrn157.cachix.org-1:6bbBYkXBDwcPDtffeN+83a1/QqnuHVmS1Ubg2qXPE1A="
         "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
     ];
 # Added due to my system lagging insanely when compiling
@@ -36,6 +36,9 @@
 # Spicetify
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
+    # PineconeMC
+    pineconemc.url = "github:ElyPrismLauncher/Launcher";
 
 # Hjem
     hjem = {
