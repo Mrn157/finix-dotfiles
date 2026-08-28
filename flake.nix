@@ -80,6 +80,16 @@
     config.allowUnfree = true;
     overlays = [
       inputs.nix-cachyos-kernel.overlays.pinned
+      
+      # Lix Package Manager
+      (final: prev: {
+        inherit (prev.lixPackageSets.stable)
+          nixpkgs-review
+          nix-eval-jobs
+          nix-fast-build
+          colmena
+          ;
+      })
     ];
   };
   pkgs-stable = import inputs.nixpkgs-stable {

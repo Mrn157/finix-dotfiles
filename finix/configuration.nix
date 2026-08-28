@@ -78,6 +78,7 @@
 
   services.nix-daemon = {
     enable = true;
+    package = pkgs.lixPackageSets.stable.lix;
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [
@@ -311,6 +312,7 @@
       inputs.pineconemc.packages."${system}".default
 
       (pkgs.callPackage ./pkgs/yambar/yambar-pkg.nix {})
+      (nixos-rebuild-ng.override { nix = pkgs.lixPackageSets.stable.lix; })
       (pkgs.callPackage ./pkgs/rosepine-gtk-theme/rosepine-gtk-theme.nix {})
       (pkgs.callPackage ./pkgs/dracula-circle-icon-theme/dracula-circle-icon-theme.nix {})
       (pkgs.callPackage ./pkgs/cage-xtmapper/cage-xtmapper.nix {})
