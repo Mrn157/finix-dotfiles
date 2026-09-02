@@ -27,7 +27,6 @@
 # NVChad
     nix4nvchad = {
       url = "github:nix-community/nix4nvchad";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-cachyos-kernel = {
@@ -58,7 +57,6 @@
       inputs.hjem.follows = "hjem";
     };
 
-# Helium
     helium = {
       url = "github:schembriaiden/helium-browser-nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -67,6 +65,11 @@
 # Zen Browser
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    finix-community-modules = {
+      url = "github:finix-community/community-modules";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -145,8 +148,12 @@
           mangowc
           pipewire
           wireplumber
+          autologin
           inputs.spicetify-nix.nixosModules.default
           inputs.hjem.finixModules.default
+
+          # Community Modules
+          inputs.finix-community-modules.nixosModules.nix-ld
           ];
 
         inherit specialArgs;

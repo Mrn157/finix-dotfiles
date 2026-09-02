@@ -25,7 +25,7 @@ Plans:
 - [x] Declarative ZSH
 - [x] Zen Browser
 - [x] Access to Stable + Unstable packages 
-- [ ] Auto Login without a DM
+- [x] Auto Login without a DM
 - [x] Declarative nvim
 - [x] CachyOS Kernel
 - [x] Cursor Theming

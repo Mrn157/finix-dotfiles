@@ -78,7 +78,7 @@
 
   services.nix-daemon = {
     enable = true;
-    package = pkgs.lixPackageSets.stable.lix;
+    # package = pkgs.lixPackageSets.stable.lix;
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [
@@ -89,6 +89,44 @@
   };
 
   programs = {
+
+  nix-ld.enable = true;
+  nix-ld.libraries = with pkgs; [
+    mesa
+    stdenv.cc.cc
+    gcc
+    glibc
+    fuse3
+    glib
+    nspr
+    pango
+    gtk3
+    cairo
+    cups
+    atk
+    dbus
+    expat
+    libgbm
+    nss_latest
+    alsa-lib
+    libxkbcommon
+    libGL
+    fontconfig
+    freetype
+    libSM
+    libICE
+    libxcb
+    libxcomposite
+    libx11
+    libXdamage
+    libxfixes
+    libxext
+    libxrandr
+    libxi
+    libxtst
+    libxrender
+  ];
+
     pipewire = {
       enable = true;
     };
@@ -120,7 +158,7 @@
         spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
       in
         {
-        enable = true;
+        enable = false;
         enabledExtensions = with spicePkgs.extensions; [
           adblock
           hidePodcasts
@@ -144,6 +182,17 @@
 
 
   services = {
+
+    getty.enable = true;
+
+    autologin = {
+      enable = true;
+      user = "mrn1";
+      command = pkgs.writeShellScript "autologin.sh" ''
+        export QT_QPA_PLATFORMTHEME=gtk3
+        exec dbus-run-session niri --session > /dev/null 2>&1
+      '';
+    };
       # Audio setup
       mdevd.hotplugRules = lib.mkMerge [
     (lib.mkAfter ''
@@ -208,7 +257,9 @@
     mdevd.enable = true;
     mdevd.nlgroups = 4;
 
-    dhcpcd.enable = true;
+    dhcpcd = {
+      enable = true;
+       };
 
     iwd.enable = true;
 
@@ -286,7 +337,7 @@
   # $ nix search wget
   environment.systemPackages =
   (with pkgs; [
-      wget foot nemo-with-extensions nwg-look git fastfetch appimage-run unzip cargo pavucontrol btop 
+      wget foot nemo-with-extensions nwg-look git appimage-run unzip cargo pavucontrol btop 
       udisks udiskie ffmpeg_6-full waybar pulsemixer swaybg vulkan-tools kdePackages.kdenlive
       grim slurp rose-pine-cursor wl-clipboard qview tray-tui lsfg-vk-ui lsfg-vk 
       rose-pine-hyprcursor fzf gcc gdu protonup-ng protontricks kdiskmark virt-manager qemu_kvm
@@ -294,7 +345,7 @@
       nix-init nixd python3 yad eza rofi waydroid-helper waydroid steam prismlauncher w3m wget bluetui shadow openssh 
       ninja meson plocate gnumake mpv tmux p7zip steam-run libsm rofimoji chawan nh hyprlauncher zsh tailscale
       dualsensectl pcsx2 mgba reddit-tui openjdk17 emacs android-tools xdg-desktop-portal-gnome impala bolt-launcher
-      cliphist openresolv nodejs obs-studio peazip brillo wl-kbptr hydralauncher qutebrowser gamescope xdotool
+      cliphist openresolv nodejs obs-studio peazip brillo wl-kbptr hydralauncher qutebrowser gamescope xdotool wvkbd
 
       # Neovim Stuff
       neovim neovide docker-compose-language-service dockerfile-language-server emmet-language-server nixd nil ripgrep
@@ -312,7 +363,7 @@
       inputs.pineconemc.packages."${system}".default
 
       (pkgs.callPackage ./pkgs/yambar/yambar-pkg.nix {})
-      (nixos-rebuild-ng.override { nix = pkgs.lixPackageSets.stable.lix; })
+      # (nixos-rebuild-ng.override { nix = pkgs.lixPackageSets.stable.lix; })
       (pkgs.callPackage ./pkgs/rosepine-gtk-theme/rosepine-gtk-theme.nix {})
       (pkgs.callPackage ./pkgs/dracula-circle-icon-theme/dracula-circle-icon-theme.nix {})
       (pkgs.callPackage ./pkgs/cage-xtmapper/cage-xtmapper.nix {})
@@ -327,5 +378,7 @@
   (with inputs.pkgs-stable; [
     lutris-free
   ]);
+
+
 
 }

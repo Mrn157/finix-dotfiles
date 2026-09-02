@@ -5,9 +5,3 @@ if test -z "${XDG_RUNTIME_DIR}"; then
 	chmod 0700 "${XDG_RUNTIME_DIR}"
     fi
 fi
-
-
-if [[ "$(tty)" == "/dev/tty1" ]] && [[ -z "$DISPLAY" ]]; then
-  export QT_QPA_PLATFORMTHEME=gtk3
-	exec dbus-run-session niri --session > /dev/null 2>&1
-fi
