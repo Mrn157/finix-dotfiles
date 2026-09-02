@@ -158,7 +158,7 @@
         spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
       in
         {
-        enable = false;
+        enable = true;
         enabledExtensions = with spicePkgs.extensions; [
           adblock
           hidePodcasts
