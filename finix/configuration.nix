@@ -346,6 +346,7 @@
       ninja meson plocate gnumake mpv tmux p7zip steam-run libsm rofimoji chawan nh hyprlauncher zsh tailscale
       dualsensectl pcsx2 mgba reddit-tui openjdk17 emacs android-tools xdg-desktop-portal-gnome impala bolt-launcher
       cliphist openresolv nodejs obs-studio peazip brillo wl-kbptr hydralauncher qutebrowser gamescope xdotool wvkbd
+      fastfetch gnutar
 
       # Neovim Stuff
       neovim neovide docker-compose-language-service dockerfile-language-server emmet-language-server nixd nil ripgrep
